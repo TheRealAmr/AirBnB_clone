@@ -15,6 +15,7 @@ Alx AirBnB Team Project
 - write BaseModel
 
 ## 4. Create BaseModel from dictionary
+- From Dict/json to BaseModel init
 ## 5. Store first object
 ## 6. Console 0.0.1
 ## 7. Console 0.1
