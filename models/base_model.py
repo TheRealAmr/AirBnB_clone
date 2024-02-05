@@ -1,21 +1,29 @@
 #!/usr/bin/python3
 """Base Model Class."""
 from uuid import uuid4
-import datetime
+from datetime import datetime
 
 
 class BaseModel:
     """base class.
 
     Attributes:
-        __size (int): square size
+        kwargs: any passed args for Json to class
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """Initialize the square instance."""
-        self.id = str(uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if not kwargs:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+        else:
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue
+                if key == 'updated_at' or key == 'created_at':
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                setattr(self, key, value)
 
     def __str__(self):
         """Return String represent."""
@@ -24,7 +32,7 @@ class BaseModel:
 
     def save(self):
         """Update date."""
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """Return a dict."""

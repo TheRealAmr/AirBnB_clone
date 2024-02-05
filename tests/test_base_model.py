@@ -1,5 +1,7 @@
-import unittest, time
+import unittest
+import time
 from models.base_model import BaseModel
+
 
 class TestBaseModel(unittest.TestCase):
     def test_init(self):
@@ -26,3 +28,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn('id', model_dict)
         self.assertIn('created_at', model_dict)
         self.assertIn('updated_at', model_dict)
+
+    def test_from_dict(self):
+        model1 = BaseModel()
+        model_dict = model1.to_dict()
+        model2 = BaseModel(**model_dict)
+        model_dict2 = model2.to_dict()
+        self.assertEqual(model_dict['__class__'], model_dict2['__class__'])
+        self.assertEqual(model_dict['id'], model_dict2['id'])
+        self.assertEqual(model_dict['created_at'], model_dict2['created_at'])
+        self.assertIn('id', model_dict2)
+        self.assertIn('created_at', model_dict2)
+        self.assertIn('updated_at', model_dict2)
