@@ -2,6 +2,7 @@
 """Base Model Class."""
 from uuid import uuid4
 from datetime import datetime
+from . import storage
 
 
 class BaseModel:
@@ -12,11 +13,12 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        """Initialize the square instance."""
+        """Initialize BaseModel instance."""
         if not kwargs:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key == '__class__':
@@ -33,6 +35,7 @@ class BaseModel:
     def save(self):
         """Update date."""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """Return a dict."""
