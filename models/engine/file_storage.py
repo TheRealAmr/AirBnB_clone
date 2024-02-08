@@ -13,7 +13,7 @@ class FileStorage:
 
     def __init__(self, *args, **kwargs):
         """Initialize FileStore instance.
-        
+
         File path defined twice One private (task requirement)
         and One public for unittest
         """
@@ -27,8 +27,9 @@ class FileStorage:
 
     def refresh(self):
         """Refresh objects to get new updates."""
-        self.__objects[f"{self.obj.__class__.__name__}.{self.obj.id}"] = self.obj.to_dict()
-        print(self.__objects)
+        self.__objects[
+            f"{self.obj.__class__.__name__}.{self.obj.id}"
+            ] = self.obj.to_dict()
 
     def new(self, obj):
         """Add new key to the Objects dict."""
