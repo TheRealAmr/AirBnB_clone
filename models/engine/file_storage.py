@@ -2,6 +2,13 @@
 """File Storage Class."""
 import json
 import os
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.review import Review
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
 
 
 class FileStorage:
@@ -25,21 +32,18 @@ class FileStorage:
         """Return Objects dict."""
         return self.__objects
 
-    def refresh(self):
-        """Refresh objects to get new updates."""
-        self.__objects[
-            f"{self.obj.__class__.__name__}.{self.obj.id}"
-            ] = self.obj.to_dict()
-
     def new(self, obj):
         """Add new key to the Objects dict."""
-        self.obj = obj
-        self.refresh()
+        self.__objects[
+            f"{obj.__class__.__name__}.{obj.id}"
+            ] = obj
 
     def save(self):
         """Save Objects dict into json file."""
-        self.refresh()
-        self.jsons = json.dumps(self.__objects)
+        js = {}
+        for key, value in self.__objects.items():
+            js[key] = value.to_dict()
+        self.jsons = json.dumps(js)
         self.jsonf = open(self.__file_path, 'w')
         print(self.jsons, file=self.jsonf)
         self.jsonf.close()
@@ -48,5 +52,8 @@ class FileStorage:
         """Re-Save Objects dict."""
         if os.path.exists(self.__file_path):
             self.jsonf = open(self.__file_path, 'r')
-            self.__objects = json.load(self.jsonf)
+            self.d = json.load(self.jsonf)
+            for key, obj in self.d.items():
+                newObj = eval(obj['__class__'])(**obj)
+                self.__objects[key] = newObj
             self.jsonf.close()

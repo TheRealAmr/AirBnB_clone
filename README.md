@@ -6,19 +6,18 @@ Alx AirBnB Team Project
 .
 ├── AUTHORS
 ├── README.md
-├── file.json
+├── console.py
 ├── models
 │   ├── __init__.py
 │   ├── base_model.py
 │   └── engine
 │       ├── __init__.py
 │       └── file_storage.py
-├── temp_testing_DELETE.py
 └── tests
     ├── test_base_model.py
     └── test_file_storage.py
 
-3 directories, 10 files
+3 directories, 9 files
 ```
 
 ## 0. README, AUTHORS
@@ -41,7 +40,19 @@ Alx AirBnB Team Project
 - Dict to json
 - Json to dict
 ## 6. Console 0.0.1
+- basic console setup
 ## 7. Console 0.1
+- add all
+- add show
+- add create
+- add destroy
+- add Update
+### Sample
+![sample](.res/console.png)
 ## 8. First User
+- Inherit from basemodel
 ## 9. More classes!
+- alot of classessss!
+- Inherited from basemodel
 ## 10. Console 1.0
+- add support for new classses
