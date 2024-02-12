@@ -19,7 +19,8 @@ class HBNBCommand(cmd.Cmd):
     def __init__(self):
         """Init."""
         super().__init__()
-        self.classN = ["BaseModel"]
+        self.classN = ["BaseModel", "User", "Place",
+                       "State", "City", "Amenity", "Review"]
 
     def do_hello(self, args):
         """Print a greeting."""
@@ -30,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_quit(self, args):
-        """Quit the command-line interpreter."""
+        """Quits the CL interpreter."""
         return True
 
     do_exit = do_quit
@@ -56,6 +57,50 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
+    def do_show(self, cln):
+        """Print string representation of an instance."""
+        if len(cln) and cln.split(" ")[0] in self.classN:
+            try:
+                cln.split(" ")[1]
+            except Exception as e:
+                print("** instance id missing **")
+                return
+            idd = cln.split(" ")[0] + '.' + cln.split(" ")[1]
+            x = data.all()
+            if idd not in x:
+                print("** no instance found **")
+                return
+            print(x[idd])
+            return
+        elif not len(cln):
+            print("** class name missing **")
+            return
+        elif cln.split(" ")[0] not in self.classN:
+            print("** class doesn't exist **")
+            return
+
+    def do_destroy(self, cln):
+        """Deletes instance based on class name and class id."""
+        if len(cln) and cln.split(" ")[0] in self.classN:
+            try:
+                cln.split(" ")[1]
+            except Exception as e:
+                print("** instance id missing **")
+                return
+            idd = cln.split(" ")[0] + '.' + cln.split(" ")[1]
+            x = data.all()
+            if idd not in x:
+                print("** no instance found **")
+                return
+            del x[idd]
+            data.save()
+            return
+        elif not len(cln):
+            print("** class name missing **")
+            return
+        elif cln.split(" ")[0] not in self.classN:
+            print("** class doesn't exist **")
+            return
 
     def do_all(self, cln):
         """Print all string representation of all.
@@ -75,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             print([d[x].__str__() for x in d])
 
     def do_update(self, args):
-        """Update an instance based on the class name and id."""
+        """Updates an instance based on the class name and class id."""
         arg_list = args.split(" ")
         if not len(args):
             print("** class name missing **")
