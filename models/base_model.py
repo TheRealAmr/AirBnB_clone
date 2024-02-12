@@ -29,8 +29,7 @@ class BaseModel:
 
     def __str__(self):
         """Return String represent."""
-        return "[{}] ({}) {}".format(
-            self.__class__.__name__, self.id, self.__dict__)
+        return self.__class__.__name__
 
     def save(self):
         """Update date."""
