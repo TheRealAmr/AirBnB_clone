@@ -80,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_destroy(self, cln):
-        """Deletes instance based on class name and class id."""
+        """Delete instance based on class name and class id."""
         if len(cln) and cln.split(" ")[0] in self.classN:
             try:
                 cln.split(" ")[1]
@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             print([d[x].__str__() for x in d])
 
     def do_update(self, args):
-        """Updates an instance based on the class name and class id."""
+        """Update an instance based on the class name and class id."""
         arg_list = args.split(" ")
         if not len(args):
             print("** class name missing **")
