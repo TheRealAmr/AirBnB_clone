@@ -19,8 +19,7 @@ class HBNBCommand(cmd.Cmd):
     def __init__(self):
         """Init."""
         super().__init__()
-        self.classN = ["BaseModel", "User", "Place",
-                       "State", "City", "Amenity", "Review"]
+        self.classN = ["BaseModel"]
 
     def do_hello(self, args):
         """Print a greeting."""
@@ -57,50 +56,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-    def do_show(self, cln):
-        """Print string representation of an instance."""
-        if len(cln) and cln.split(" ")[0] in self.classN:
-            try:
-                cln.split(" ")[1]
-            except Exception as e:
-                print("** instance id missing **")
-                return
-            idd = cln.split(" ")[0] + '.' + cln.split(" ")[1]
-            x = data.all()
-            if idd not in x:
-                print("** no instance found **")
-                return
-            print(x[idd])
-            return
-        elif not len(cln):
-            print("** class name missing **")
-            return
-        elif cln.split(" ")[0] not in self.classN:
-            print("** class doesn't exist **")
-            return
-
-    def do_destroy(self, cln):
-        """Delete instance based on class name and id."""
-        if len(cln) and cln.split(" ")[0] in self.classN:
-            try:
-                cln.split(" ")[1]
-            except Exception as e:
-                print("** instance id missing **")
-                return
-            idd = cln.split(" ")[0] + '.' + cln.split(" ")[1]
-            x = data.all()
-            if idd not in x:
-                print("** no instance found **")
-                return
-            del x[idd]
-            data.save()
-            return
-        elif not len(cln):
-            print("** class name missing **")
-            return
-        elif cln.split(" ")[0] not in self.classN:
-            print("** class doesn't exist **")
-            return
 
     def do_all(self, cln):
         """Print all string representation of all.
