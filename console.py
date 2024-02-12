@@ -22,10 +22,6 @@ class HBNBCommand(cmd.Cmd):
         self.classN = ["BaseModel", "User", "Place",
                        "State", "City", "Amenity", "Review"]
 
-    def do_hello(self, args):
-        """Print a greeting."""
-        print("Hello!")
-
     def emptyline(self):
         """DO nothing."""
         pass
@@ -33,9 +29,6 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, args):
         """Quits the CL interpreter."""
         return True
-
-    do_exit = do_quit
-    do_q = do_quit
 
     def do_EOF(self, arg):
         """Exit the program on EOF."""
