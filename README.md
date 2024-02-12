@@ -19,9 +19,6 @@ Alx AirBnB Team Project
 │   ├── review.py
 │   ├── state.py
 │   └── user.py
-├── tes1.py
-├── tes3.py
-├── test.py
 └── tests
     ├── test_amenity.py
     ├── test_base_model.py
@@ -34,7 +31,7 @@ Alx AirBnB Team Project
     ├── test_state.py
     └── test_user.py
 
-4 directories, 25 files
+4 directories, 22 files
 ```
 
 ## 0. README, AUTHORS
