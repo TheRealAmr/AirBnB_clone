@@ -9,15 +9,32 @@ Alx AirBnB Team Project
 ├── console.py
 ├── models
 │   ├── __init__.py
+│   ├── amenity.py
 │   ├── base_model.py
-│   └── engine
-│       ├── __init__.py
-│       └── file_storage.py
+│   ├── city.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   └── file_storage.py
+│   ├── place.py
+│   ├── review.py
+│   ├── state.py
+│   └── user.py
+├── tes1.py
+├── tes3.py
+├── test.py
 └── tests
+    ├── test_amenity.py
     ├── test_base_model.py
-    └── test_file_storage.py
+    ├── test_city.py
+    ├── test_engine
+    │   ├── __init__.py
+    │   └── test_file_storage.py
+    ├── test_place.py
+    ├── test_review.py
+    ├── test_state.py
+    └── test_user.py
 
-3 directories, 9 files
+4 directories, 25 files
 ```
 
 ## 0. README, AUTHORS
