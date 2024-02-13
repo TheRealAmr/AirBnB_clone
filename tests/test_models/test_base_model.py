@@ -2,6 +2,7 @@ import unittest
 import time
 from models.base_model import BaseModel
 
+
 class TestBaseModel(unittest.TestCase):
     def test_init(self):
         """
@@ -46,8 +47,10 @@ class TestBaseModel(unittest.TestCase):
     def test_from_dict(self):
         """
         Converts the 1st & 2nd model to a dictionary
-        Checks that the class name, 'id' and 'created_at' match
-        Checks that 'id', 'created_at' and 'updated_at' are present in the 2nd dict
+        Checks that the class name, 'id' and 'created_at'
+        match
+        Checks that 'id', 'created_at' and 'updated_at' are present
+        in the 2nd dict.
         """
         model1 = BaseModel()
         model_dict = model1.to_dict()
