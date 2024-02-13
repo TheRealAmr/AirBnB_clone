@@ -16,7 +16,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
     classN = ["BaseModel", "User", "Place",
-                       "State", "City", "Amenity", "Review"]
+              "State", "City", "Amenity", "Review"]
 
     def emptyline(self):
         """DO nothing."""
